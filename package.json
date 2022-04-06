@@ -14,19 +14,8 @@
     "prepare": "cross-env husky install",
     "pre-commit": "cross-env echo pre-commit"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Yandex-12-Team007/2048.git"
-  },
-  "keywords": [
-    "2048"
-  ],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Yandex-12-Team007/2048/issues"
-  },
-  "homepage": "https://github.com/Yandex-12-Team007/2048#readme",
   "devDependencies": {
     "@types/react": "17.0.43",
     "@types/react-dom": "17.0.14",
