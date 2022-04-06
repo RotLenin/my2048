@@ -1,0 +1,40 @@
+{
+  "compilerOptions": {
+    "lib": [
+      "dom",
+      "es2017"
+    ],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "target": "es5",
+    "jsx": "react",
+    "importHelpers": true,
+    "noUnusedLocals": true,
+    "noImplicitAny" : false,
+    "esModuleInterop": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "declaration": false,
+    "sourceMap": false,
+    "outDir": "./dist",
+    "baseUrl": ".",
+    "paths": {
+      "*": ["./src/*"],
+      "Pages/*": ["./src/pages/*"],
+      "Constants/*": ["./src/constants/*"],
+      "Components/*": ["./src/components/*"],
+      "Utils/*": ["./src/utils/*"]
+    },
+    "typeRoots": ["typings/**/*.d.ts", "node_modules/@types"]
+  },
+  "include": [
+    "src",
+    "typings/**/*.d.ts",
+    "./node_modules/@types"
+  ],
+  "exclude": [
+    "**/*.js"
+  ]
+}
