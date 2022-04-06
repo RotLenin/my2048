@@ -27,7 +27,15 @@ const START_MATRIX : number[][] = [
   [0, 0, 0, 0],
   [0, 0, 0, 0]
 ];
+
 /*
+const START_MATRIX : number[][] = [
+  [8, 16, 32, 64],
+  [16, 32, 64, 32],
+  [32, 64, 32, 16],
+  [64, 32, 128, 16]
+];
+
 const START_MATRIX = [
   [2, 2, 2, 2],
   [null, 2, 2, 2],

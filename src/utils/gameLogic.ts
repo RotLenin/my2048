@@ -109,11 +109,9 @@ function moving(
           iDirection ? -1 : 1
           :
           jDirection ? -1 : 1;
+
         let index = mainIndex + direction;
         console.log(`mainDirection : ${mainDirection} | MainIndex : ${mainIndex} | direction : ${direction} | index : ${index} | i ${i} | j ${j}`);
-        console.log((mainDirection ? matrix[index][j] === 0 : matrix[i][index] === 0));
-        console.log(matrix[index][j]);
-        console.log(matrix[i][index]);
         while ((index > 0 && index < matrix.length - 1) && (mainDirection ? matrix[index][j] === 0 : matrix[i][index] === 0)) {
           console.log(`Index before increment : ${index}`);
           index += direction
@@ -263,6 +261,7 @@ function checkDirections(matrix : number[][], status : IGameStatus){
   /** По умолчанию выставляем возможность игры в false */
   status.canPlay = false;
   for(let side in direction) {
+    console.log(`Check direction ${side}`)
     direction[side] = checkDirection(matrix, directionRule[side]);
     /** Если есть возможность свапнуть хотя бы в 1 сторону
      *  есть возможность играть */
@@ -281,23 +280,31 @@ function checkDirections(matrix : number[][], status : IGameStatus){
  *  @return {boolean}
  */
 function checkDirection(matrix : number[][], rule : IMoveParams) : boolean{
+  drowMatrix(matrix);
+  console.log(rule);
   let {iStart, iMax, jStart, jMax} = rule;
 
   let iDirection = iStart < iMax;
   let jDirection = jStart < jMax;
   let mainDirection = iMax !== 0 && iMax !== matrix.length;
 
+  console.log(`iDirection : ${iDirection} | jDirection : ${jDirection} | mainDirection : ${mainDirection}`);
+
   for (let i = iStart; iDirection ? i < iMax : i >= iMax; iDirection ? i++ : i--) {
     for (let j = jStart; jDirection ? j < jMax : j >= jMax; jDirection ? j++ : j--) {
+      console.log(`'Ряд : ${i+1}, Столбец : ${j+1}, Значение : ${matrix[i][j]}`);
+
       let mainIndex = mainDirection ? i : j;
       let direction = mainDirection ?
-        iDirection ? -1 : 1
+        iDirection ? 1 : -1
         :
-        jDirection ? -1 : 1;
-      let index = mainIndex + direction;
+        jDirection ? 1 : -1;
 
+      let index = mainIndex + direction;
+      console.log(`index : ${index}`);
       let val = matrix[i][j];
       let nextVal = mainDirection ? matrix[index][j] : matrix[i][index];
+      console.log(`'index : ${index}, nextVal : ${nextVal}`);
 
       /** Если следующее значение число, а значение
        *  по направлению смещения 0 - есть возможность смещения
@@ -326,6 +333,7 @@ function checkDirection(matrix : number[][], rule : IMoveParams) : boolean{
 export function initGame(matrix : number[][], status : IGameStatus) : IGameState{
   console.log('game logic initGame');
   matrix = addSquare(matrix, 2);
+  checkDirections(matrix, status);
   status.start = true;
   return [matrix, status];
 }

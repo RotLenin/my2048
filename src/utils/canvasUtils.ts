@@ -54,7 +54,7 @@ export function roundRect(ctx, x, y, width, height, radius, fill, stroke) {
 export function drowGameSquare(ctx, value, x, y, width, height, radius, fill, stroke){
   const FONT_SIZE = width / 3;
   let colourList = {
-    null : {
+    0 : {
       stroke : '#dcb',
       text : null,
       shadow : null,
@@ -156,7 +156,7 @@ export function drowGameSquare(ctx, value, x, y, width, height, radius, fill, st
   roundRect(ctx, x, y, width, height, radius, fill, stroke)
 
   /** Рисуем текст */
-  if(value !== null){
+  if(value !== 0){
     ctx.font = FONT_SIZE+'px Arial';
     ctx.strokeStyle = colour.text;
     ctx.fillStyle = colour.text;
